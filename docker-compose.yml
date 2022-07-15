@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  frontend:
+    container_name: weather_app
+    build:
+      context: ./weather-app
+      dockerfile: ../Dockerfile
+    command: npm start
+    volumes:
+      - ./weather-app:/weather-app:delegated
+      - /weather-app/node_modules
+    ports:
+      - 3001:3000
+    env_file:
+      - ./weather-app/.env
